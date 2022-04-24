@@ -20,7 +20,7 @@ const getSite = ({name}) => {
       <div class= "card" style ="width: 18rem;">
         <div class = "card-body">
           <h5 class="card-title">${name}</h5>
-          <p class="card-text">${name} is a sigma</p>
+          <p class="card-text">${name}</p>
         </div>
       </div>
       </body>

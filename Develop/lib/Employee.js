@@ -17,7 +17,7 @@ class Employee {
         return "Employee";
     }
 };
-module.exports = Employee;
+module.exports = new Employee;
 
 
 
