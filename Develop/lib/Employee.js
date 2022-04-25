@@ -7,25 +7,9 @@ class Employee {
     this.email = email;
   }
   getName() {
-    inquirer.prompt([
-      {
-        name: "name",
-        type: "input",
-        message: "What is your first name?",
-        value: this.name,
-      },
-    ]);
     return this.name;
   }
   getId() {
-    inquirer.prompt([
-      {
-        name: "id",
-        type: "input",
-        message: "What is the employee's ID?",
-        value: this.id,
-      },
-    ]);
     return this.id;
   }
   getEmail() {
@@ -35,4 +19,16 @@ class Employee {
     return "Employee";
   }
 }
-module.exports = Employee;
+module.exports = function(){
+    inquirer
+    .prompt([
+        {
+            name: "name",
+            type: "input",
+            message: "What is the employee's name?"
+        }
+    ]);
+    .then((result)=>{
+        return result;
+    })
+};

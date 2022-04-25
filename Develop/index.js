@@ -1,23 +1,28 @@
 const inquirer = require("inquirer");
-const fs = require("fs");
+const fs = require("fs").promises;
 getDocument = require("./src/getSite.js");
 getBob = require("./bob");
 getEmployee = require("./lib/Employee");
 
 const init = () => {
-    console.log(getEmployee);
-    getEmployee().then(function(employeeAnswers){
-        console.log(employeeAnswers);
+    inquirer
+    .prompt([
+        {
+            name: "position",
+            type: "list",
+            message: "Hello what would you like to do today?",
+            choices: ["Manager", "Engineer", "Intern"]
+        },
+    ])
+    .then((result)=>{
+        if (result.choices === "Manager"){
+            getEmployee();
+
+        }
+        //switch case statement
+            // if add manager was selected
+                // call addManager function
     })
-    .then((answers => {  
-        console.log(answers);
-        console.log(getEmployee);
-        // if (answers.position === "Employee"){
-        //     getEmployee.then(function(employeeAnswers){
-        //         console.log(employeeAnswers);
-        //     })
-        // }
-    }))
 }
 
 init()
