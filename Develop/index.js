@@ -8,19 +8,9 @@ const init = () => {
     inquirer
     .prompt([
         {
-            name: "name",
+            name: "test",
+            message: "Would you like to test?",
             type: "input",
-            message: "What is the employee's name?"
-        },
-        {
-            name: "position",
-            type: "list",
-            message: "What is the employee position?",
-            choices: [
-                {
-                    name: "Employee",
-                }
-            ]
         }
     ])
     .then((answers => {  

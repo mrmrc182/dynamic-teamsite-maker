@@ -7,7 +7,7 @@ module.exports= function(){
     return inquirer
     .prompt([
         {
-            name: "name",
+            name: "food",
             type: "input",
             message: "What is Bob's favorite food?"
         },

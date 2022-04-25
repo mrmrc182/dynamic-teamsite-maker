@@ -1,3 +1,5 @@
+
+
 const getSite = ({name}) => {
   return `<!DOCTYPE html>
     <html lang="en">
@@ -19,7 +21,7 @@ const getSite = ({name}) => {
       <body>
       <div class= "card" style ="width: 18rem;">
         <div class = "card-body">
-          <h5 class="card-title">${name}</h5>
+          <h5 class="card-title">${getBob.food} is ${name}'s favorite food</h5>
           <p class="card-text">${name}</p>
         </div>
       </div>
