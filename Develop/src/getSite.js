@@ -1,4 +1,4 @@
-
+//make variables for generating each class
 
 const getSite = ({name}) => {
   return `<!DOCTYPE html>
@@ -21,8 +21,8 @@ const getSite = ({name}) => {
       <body>
       <div class= "card" style ="width: 18rem;">
         <div class = "card-body">
-          <h5 class="card-title">${getBob.food} is ${name}'s favorite food</h5>
-          <p class="card-text">${name}</p>
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
         </div>
       </div>
       </body>

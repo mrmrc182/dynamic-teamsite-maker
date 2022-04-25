@@ -19,16 +19,4 @@ class Employee {
     return "Employee";
   }
 }
-module.exports = function(){
-    inquirer
-    .prompt([
-        {
-            name: "name",
-            type: "input",
-            message: "What is the employee's name?"
-        }
-    ]);
-    .then((result)=>{
-        return result;
-    })
-};
+module.exports = Employee;
