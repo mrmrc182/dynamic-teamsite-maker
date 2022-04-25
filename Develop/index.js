@@ -5,14 +5,10 @@ getBob = require("./bob");
 getEmployee = require("./lib/Employee");
 
 const init = () => {
-    inquirer
-    .prompt([
-        {
-            name: "test",
-            message: "Would you like to test?",
-            type: "input",
-        }
-    ])
+    console.log(getEmployee);
+    getEmployee().then(function(employeeAnswers){
+        console.log(employeeAnswers);
+    })
     .then((answers => {  
         console.log(answers);
         console.log(getEmployee);

@@ -35,4 +35,4 @@ class Employee {
     return "Employee";
   }
 }
-module.exports = new Employee();
+module.exports = Employee;
