@@ -1,6 +1,4 @@
-
-
-const getSite = () => {
+const getSite = (employeeArray) => {
   return `<!DOCTYPE html>
     <html lang="en">
       <head>
@@ -15,63 +13,66 @@ const getSite = () => {
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
           crossorigin="anonymous"
         />
-    
-        <title>Your Team's Site</title>
+        <link rel="stylesheet" href="./style.css"/>
+        <title>Your Team's Profiles</title>
       </head>
       <body>
-      ${generateTeam}
+      <header><h1>Your Team's Profiles</h1></header>
+      <div class="row">
+      ${generateTeam(employeeArray)}
+      </div>
       </body>
     </html>
     `;
 };
-function generateTeam(employeeArray){
-  function generateManager(manager){
-    return `<div class= "card" style ="width: 18rem; background-color: red;">
+function generateTeam(employeeArray) {
+  function generateManager(manager) {
+    return `<div class= "card" style ="width: 18rem; background-color: red; margin: 10px;">
         <div class = "card-body">
           <h5 class="card-title">${manager.name}</h5>
-          <h5 class="card-title">Manager</h5>
-          <p class="card-text">${manager.officeNumber}</p>
-          <p class="card-text">${manager.id}</p>
-          <p class="card-text">${manager.email}</p>
+          <h4 class>Manager</h4>
+          <p class="card-text">Mobile: ${manager.officeNumber}</p>
+          <p class="card-text">ID: ${manager.id}</p>
+          <p class="card-text">Email: <a href="${manager.email}">${manager.email}</a></p>
         </div>
       </div>`;
-};
+  }
+  function generateEngineer(engineer){
+    return `<div class= "card" style ="width: 18rem; background-color: green; margin: 10px;">
+          <div class = "card-body">
+          <h5 class="card-title">${engineer.name}</h5>
+          <h4 class>Engineer</h4>
+          <p class="card-text">Github: <a href= "https://github.com/${engineer.github}">${engineer.github}</a></p>
+          <p class="card-text">ID: ${engineer.id}</p>
+          <p class="card-text">Email: <a href="${engineer.email}">${engineer.email}</a></p>
+          </div>
+        </div>`;
+  };
+  function generateIntern(intern){
+    return `<div class= "card" style ="width: 18rem; margin: 10px;">
+          <div class = "card-body">
+            <h5 class="card-title">${intern.name}</h5>
+            <h4 class>Intern</h4>
+            <p class="card-text">School: ${intern.school}</p>
+            <p class="card-text">ID: ${intern.id}</p>
+            <p class="card-text">Email: <a href="${intern.email}">${intern.email}</a></p>
+          </div>
+        </div>`;
+  };
   const document = [];
-    
-  document.push(
-      employeeArray
-        .filter(employee => employee.getRole() === "Manager")
-        .map(manager => generateManager(manager))
-  );  
+  for (let i = 0; i < employeeArray.length; i++) {
+    if (employeeArray[i].getRole() === "Manager") {
+      document.push(generateManager(employeeArray[i]));
+    } else if (employeeArray[i].getRole() === "Engineer") {
+      document.push(generateEngineer(employeeArray[i]));
+    } else {
+      document.push(generateIntern(employeeArray[i]));
+    }
+  }
   return document.join(" ");
-      };
+}
 
 
-// const generateEngineer = () => {
-//   `<div class= "card" style ="width: 18rem;">
-//         <div class = "card-body">
-//         <h5 class="card-title">${Engineer.name}</h5>
-//         <h5 class="card-title">Engineer</h5>
-//         <p class="card-text">${Engineer.officeNumber}</p>
-//         <p class="card-text">${Engineer.id}</p>
-//         <p class="card-text">${Engineer.email}</p>
-//         </div>
-//       </div>`;
-// };
-// const generateIntern = () => {
-//   `<div class= "card" style ="width: 18rem;">
-//         <div class = "card-body">
-//           <h5 class="card-title"></h5>
-//           <p class="card-text"></p>
-//           <p class="card-text"></p>
-//           <p class="card-text"></p>
-//         </div>
-//       </div>`;
-// };
 
-getSite();
-generateTeam();
-// generateEngineer();
-// generateIntern();
 
 module.exports = getSite;

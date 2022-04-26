@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs").promises;
 const getSite = require("./src/getSite.js");
-const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
@@ -118,6 +117,12 @@ const init = () => {
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
                   console.log(employeeArray);
+                  const employeeCards = getSite(employeeArray);
+                  fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
+                    err
+                      ? console.log("Site Generation failed.")
+                      : console.log("Site Created!")
+                  );
                 } else {
                   init();
                 }
@@ -167,6 +172,12 @@ const init = () => {
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
                   console.log(employeeArray);
+                  const employeeCards = getSite(employeeArray);
+                  fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
+                    err
+                      ? console.log("Site Generation failed.")
+                      : console.log("Site Created!")
+                  );
                 } else {
                   init();
                 }
