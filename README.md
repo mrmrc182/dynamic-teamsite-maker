@@ -9,7 +9,7 @@ Although elements of it were fairly similar to the Readme Generator assignment, 
 I wrote all of the code, but also received help from my instructor John, TA Michael, and utilized the help of several kind BCS tutors.
 
 ## Testing
-To use this application, [refer to this video](https://drive.google.com/file/d/1xhJRK7CIftdw31caKgVDZ_5wNGtYkiEA/view?usp=sharing) for a quick and easy guide.  There is also a screenshot below of what the site should look like when running properly.
+To use this application, [refer to this video](https://drive.google.com/file/d/1W6scgm3gqb0tr7L7XgUrYvpEKcUEAVpB/view) for a quick and easy guide.  There is also a screenshot below of what the site should look like when running properly.
 
 ![App Screenshot](profileSiteScreenshot.png);
 
