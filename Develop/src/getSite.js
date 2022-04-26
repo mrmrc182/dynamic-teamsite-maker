@@ -17,7 +17,7 @@ const getSite = (employeeArray) => {
         <title>Your Team's Profiles</title>
       </head>
       <body>
-      <header><h1>Your Team's Profiles</h1></header>
+      <header><h1 style="color: white;">Your Team's Profiles</h1></header>
       <div class="row">
       ${generateTeam(employeeArray)}
       </div>
@@ -27,35 +27,35 @@ const getSite = (employeeArray) => {
 };
 function generateTeam(employeeArray) {
   function generateManager(manager) {
-    return `<div class= "card" style ="width: 18rem; background-color: red; margin: 10px;">
+    return `<div class= "card" style ="width: 18rem; background-color: skyblue; margin: 10px;">
         <div class = "card-body">
+          <h5 class="card-title">Manager-</h5>
           <h5 class="card-title">${manager.name}</h5>
-          <h4 class>Manager</h4>
           <p class="card-text">Mobile: ${manager.officeNumber}</p>
           <p class="card-text">ID: ${manager.id}</p>
-          <p class="card-text">Email: <a href="${manager.email}">${manager.email}</a></p>
+          <p class="card-text">Email: <a href="mailto:${manager.email}">${manager.email}</a></p>
         </div>
       </div>`;
   }
   function generateEngineer(engineer){
-    return `<div class= "card" style ="width: 18rem; background-color: green; margin: 10px;">
+    return `<div class= "card" style ="width: 18rem; background-color: lightgreen; margin: 10px;">
           <div class = "card-body">
+          <h5 class="card-title">Engineer-</h5>
           <h5 class="card-title">${engineer.name}</h5>
-          <h4 class>Engineer</h4>
           <p class="card-text">Github: <a href= "https://github.com/${engineer.github}">${engineer.github}</a></p>
           <p class="card-text">ID: ${engineer.id}</p>
-          <p class="card-text">Email: <a href="${engineer.email}">${engineer.email}</a></p>
+          <p class="card-text">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
           </div>
         </div>`;
   };
   function generateIntern(intern){
     return `<div class= "card" style ="width: 18rem; margin: 10px;">
           <div class = "card-body">
+            <h5 class="card-title">Intern-</h5>
             <h5 class="card-title">${intern.name}</h5>
-            <h4 class>Intern</h4>
             <p class="card-text">School: ${intern.school}</p>
             <p class="card-text">ID: ${intern.id}</p>
-            <p class="card-text">Email: <a href="${intern.email}">${intern.email}</a></p>
+            <p class="card-text">Email: <a href="mailto:${intern.email}">${intern.email}</a></p>
           </div>
         </div>`;
   };
@@ -71,8 +71,5 @@ function generateTeam(employeeArray) {
   }
   return document.join(" ");
 }
-
-
-
 
 module.exports = getSite;

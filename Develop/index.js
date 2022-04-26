@@ -61,7 +61,6 @@ const init = () => {
               ])
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
-                  console.log(employeeArray);
                   const employeeCards = getSite(employeeArray);
                   fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
                     err
@@ -116,7 +115,6 @@ const init = () => {
               ])
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
-                  console.log(employeeArray);
                   const employeeCards = getSite(employeeArray);
                   fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
                     err
@@ -171,7 +169,6 @@ const init = () => {
               ])
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
-                  console.log(employeeArray);
                   const employeeCards = getSite(employeeArray);
                   fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
                     err
