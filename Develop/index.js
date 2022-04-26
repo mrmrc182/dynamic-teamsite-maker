@@ -1,10 +1,10 @@
 const inquirer = require("inquirer");
 const fs = require("fs").promises;
-getDocument = require("./src/getSite.js");
-getBob = require("./bob");
+const getSite = require("./src/getSite.js");
 const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
 
 const employeeArray = [];
 
@@ -14,7 +14,7 @@ const init = () => {
       {
         name: "position",
         type: "list",
-        message: "Hello what would you like to do today?",
+        message: "What position would you like to add?",
         choices: ["Manager", "Engineer", "Intern"],
       },
     ])
@@ -50,7 +50,6 @@ const init = () => {
               managerResult.managerEmail,
               managerResult.managerNumber
             );
-            console.log(newManager);
             employeeArray.push(newManager);
             inquirer
               .prompt([
@@ -64,6 +63,12 @@ const init = () => {
               .then((ifDone) => {
                 if (ifDone.doneCheck === "Yes") {
                   console.log(employeeArray);
+                  const employeeCards = getSite(employeeArray);
+                  fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
+                    err
+                      ? console.log("Site Generation failed.")
+                      : console.log("Site Created!")
+                  );
                 } else {
                   init();
                 }
@@ -100,7 +105,6 @@ const init = () => {
               engineerResult.engineerEmail,
               engineerResult.engineerGithub
             );
-            console.log(newEngineer);
             employeeArray.push(newEngineer);
             inquirer
               .prompt([
@@ -119,11 +123,58 @@ const init = () => {
                 }
               });
           });
-      } //todo else if Intern
-      //todo add a call init within init
+      } else {
+        inquirer
+          .prompt([
+            {
+              name: "internName",
+              type: "input",
+              message: "What is the intern's name?",
+            },
+            {
+              name: "internId",
+              type: "input",
+              message: "What is the intern's ID?",
+            },
+            {
+              name: "internEmail",
+              type: "input",
+              message: "What is the intern's email?",
+            },
+            {
+              name: "internSchool",
+              type: "input",
+              message: "What is the intern's school?",
+            },
+          ])
+          .then((internResult) => {
+            const newIntern = new Intern(
+              internResult.internName,
+              internResult.internId,
+              internResult.internEmail,
+              internResult.internSchool
+            );
+            employeeArray.push(newIntern);
+            inquirer
+              .prompt([
+                {
+                  name: "doneCheck",
+                  type: "list",
+                  message: "Are you done adding team members?",
+                  choices: ["Yes", "No"],
+                },
+              ])
+              .then((ifDone) => {
+                if (ifDone.doneCheck === "Yes") {
+                  console.log(employeeArray);
+                } else {
+                  init();
+                }
+              });
+          });
+      }
     });
 };
 
 init();
 module.exports = employeeArray;
-// this stuff below is asynchronous and putting it in last
