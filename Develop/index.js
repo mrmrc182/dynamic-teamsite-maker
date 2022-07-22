@@ -1,5 +1,5 @@
 const inquirer = require("inquirer");
-const fs = require("fs").promises;
+const fs = require("fs");
 const getSite = require("./src/getSite.js");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
