@@ -4,6 +4,7 @@ const getSite = require("./src/getSite.js");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
+const Janitor = require("./lib/Janitor");
 
 const employeeArray = [];
 
@@ -189,29 +190,29 @@ const init = () => {
               message: "What is the janitor's name?",
             },
             {
-              name: "internId",
+              name: "janitorId",
               type: "input",
               message: "What is the janitor's ID?",
             },
             {
-              name: "internEmail",
+              name: "janitorEmail",
               type: "input",
               message: "What is the janitor's email?",
             },
             {
-              name: "internSchool",
-              type: "int",
+              name: "janitorLevel",
+              type: "input",
               message: "What is the janitor's clearance level?",
             },
           ])
           .then((janitorResult) => {
-            const newIntern = new Intern(
+            const newJanitor = new Janitor(
               janitorResult.janitorName,
               janitorResult.janitorId,
               janitorResult.janitorEmail,
               janitorResult.janitorLevel
             );
-            employeeArray.push(newIntern);
+            employeeArray.push(newJanitor);
             inquirer
               .prompt([
                 {
