@@ -59,14 +59,27 @@ function generateTeam(employeeArray) {
           </div>
         </div>`;
   };
+  function generateJanitor(janitor){
+    return `<div class= "card" style ="width: 18rem; margin: 10px;">
+          <div class = "card-body">
+            <h5 class="card-title">Janitor-</h5>
+            <h5 class="card-title">${janitor.name}</h5>
+            <p class="card-text">Clearance: ${janitor.clearance}</p>
+            <p class="card-text">ID: ${janitor.id}</p>
+            <p class="card-text">Email: <a href="mailto:${janitor.email}">${janitor.email}</a></p>
+          </div>
+        </div>`;
+  };
   const document = [];
   for (let i = 0; i < employeeArray.length; i++) {
     if (employeeArray[i].getRole() === "Manager") {
       document.push(generateManager(employeeArray[i]));
     } else if (employeeArray[i].getRole() === "Engineer") {
       document.push(generateEngineer(employeeArray[i]));
-    } else {
+    } else if (employeeArray[i].getRole() === "Intern") {
       document.push(generateIntern(employeeArray[i]));
+    } else {
+      document.push(generateJanitor(employeeArray[i]));
     }
   }
   return document.join(" ");

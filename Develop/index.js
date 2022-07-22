@@ -14,7 +14,7 @@ const init = () => {
         name: "position",
         type: "list",
         message: "What position would you like to add?",
-        choices: ["Manager", "Engineer", "Intern"],
+        choices: ["Manager", "Engineer", "Intern", "Janitor"],
       },
     ])
     .then((result) => {
@@ -126,7 +126,7 @@ const init = () => {
                 }
               });
           });
-      } else {
+      } else if (result.position === "Intern"){
         inquirer
           .prompt([
             {
@@ -156,6 +156,60 @@ const init = () => {
               internResult.internId,
               internResult.internEmail,
               internResult.internSchool
+            );
+            employeeArray.push(newIntern);
+            inquirer
+              .prompt([
+                {
+                  name: "doneCheck",
+                  type: "list",
+                  message: "Are you done adding team members?",
+                  choices: ["Yes", "No"],
+                },
+              ])
+              .then((ifDone) => {
+                if (ifDone.doneCheck === "Yes") {
+                  const employeeCards = getSite(employeeArray);
+                  fs.writeFile(`./dist/Site.html`, employeeCards, (err) =>
+                    err
+                      ? console.log("Site Generation failed.")
+                      : console.log("Site Created!")
+                  );
+                } else {
+                  init();
+                }
+              });
+          })
+      } else {
+        inquirer
+          .prompt([
+            {
+              name: "janitorName",
+              type: "input",
+              message: "What is the janitor's name?",
+            },
+            {
+              name: "internId",
+              type: "input",
+              message: "What is the janitor's ID?",
+            },
+            {
+              name: "internEmail",
+              type: "input",
+              message: "What is the janitor's email?",
+            },
+            {
+              name: "internSchool",
+              type: "int",
+              message: "What is the janitor's clearance level?",
+            },
+          ])
+          .then((janitorResult) => {
+            const newIntern = new Intern(
+              janitorResult.janitorName,
+              janitorResult.janitorId,
+              janitorResult.janitorEmail,
+              janitorResult.janitorLevel
             );
             employeeArray.push(newIntern);
             inquirer
